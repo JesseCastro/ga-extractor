@@ -18,8 +18,8 @@ class GaExtractor
     if !@config.keyPath and !@config.keyContent
       throw new Error "Must provide either path to Service Account .pem key file, or key's content as string."
 
-    @ga = Promise.promisifyAll gApi.analytics({
-      version: 'v3'
+    @ga = Promise.promisifyAll gApi.analyticsreporting({
+      version: 'v4'
       params:
         "max-results": gaMaxRowsPerRequest # always extract everything API will return
         'ids': ('ga:' + @config.profileId) if @config.profileId
